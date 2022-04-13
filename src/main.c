@@ -38,7 +38,7 @@ int main()
 
 	
 	int choice = 1;
-	int number_of_cryptocurrencies = 13;
+	int number_of_cryptocurrencies = 11;
 	while (choice != 0)
 	{
 		clear();
@@ -50,6 +50,7 @@ int main()
 				return 0;
 			case 1: 
 				show(a,number_of_cryptocurrencies);	   
+				break;
 			case 2: 
 				show_limited(a,number_of_cryptocurrencies);
 				break;
@@ -72,15 +73,16 @@ int main()
 					printf("There is not enough space for adding a new cryptocurrency.\n");
 				break;
 			case 5:
-				printf("Average year of creation is %.2f m.\n",average_year_of_creation(a, number_of_cryptocurrencies));
+				printf("Average year of creation is %.2f.\n",average_year_of_creation(a, number_of_cryptocurrencies));
 				break;
 			default: 
-				printf("Something went wrong try it again.\n");
+				printf("Something went wrong try it again\n");
 				break;
 		}
 		if (choice != 0)
 			pause();
 	}
+
 	return 0; 
 }
 
@@ -114,9 +116,8 @@ void menu(void)
 			"0........exit\n"
 			"1........show\n"
 			"2......filter\n"
-			"2........edit\n"
-			"3.........add\n"
-			"4......delete\n"
+			"3........edit\n"
+			"4.........add\n"
 			"5.....average\n"
 			"Choose operation: "
 		  );
@@ -130,7 +131,7 @@ void show(TCryptocurrency a[], int size)
 	TCryptocurrency cryptocurrency;
 	puts(
 			"+------------------+------------------+------------------+------------------+\n"
-			"+ Name             + Released at      + Founder name     + Limited coins?   +"
+			"+ Name             + Released in      + Founder name     + Limited coins?   +"
 		);
 	for (int index = 0; index < size; index++) {
 		cryptocurrency = a[index];
@@ -150,7 +151,7 @@ void show_limited(TCryptocurrency a[], int size)
 	TCryptocurrency cryptocurrency;
 	puts(
 			"+------------------+------------------+------------------+------------------+\n"
-			"+ Name             + Released at      + Founder name     + Limited coins?   +"
+			"+ Name             + Released in      + Founder name     + Limited coins?   +"
 		);
 	for (int index = 0; index < size; index++) {
 		if (a[index].limited_coins == true)
@@ -203,7 +204,7 @@ bool edit(TCryptocurrency a[], int size, char name[]) // based on name
 	if (index == size)
 		return false; // it went through whole array, but the specific cryptocurrency wasn't there
 
-	printf("The record of cryptocurrency: nazev: %s, released at: %d, founder: %s, limited coins: %s, ",a[index].name, a[index].year_of_creation, a[index].founder_name, a[index].limited_coins ? "Yes" : "No");
+	printf("The record of cryptocurrency: name: %s, released at: %d, founder: %s, limited coins: %s, ",a[index].name, a[index].year_of_creation, a[index].founder_name, a[index].limited_coins ? "Yes" : "No");
 	printf("Enter the name of cryptocurrency: ");
 	scanf(" %15[^\n]",a[index].name); //nacte cely radek do konce i s mezerami
 	printf("Enter the year that was released in: ");
