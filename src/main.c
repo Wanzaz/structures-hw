@@ -47,7 +47,7 @@ int main()
 		switch(choice)
 		{
 			case 0:
-				printf("End of program.\n");
+				return 0;
 			case 1: 
 				show(a,number_of_cryptocurrencies);	   
 			case 2: 
